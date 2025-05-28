@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CMS{% endblock %}</title>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+  <div class="logo">CMS</div>  <!-- Optional site name/logo -->
+  <ul>
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'article_list' %}">Articles</a></li>
+    <li><a href="{% url 'add_article' %}">Add Article</a></li>
+  </ul>
+</nav>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p>&copy; 2025 Django CMS. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple mobile menu toggle
+        document.getElementById('navbarToggler').addEventListener('click', function() {
+            document.getElementById('navbarNav').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

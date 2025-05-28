@@ -1,0 +1,18 @@
+{% extends 'html/base.html' %}
+{% block title %}All Articles{% endblock %}
+
+{% block content %}
+<div class="article-list">
+  <h2 class="section-title">📚 All Articles</h2>
+
+  {% for article in articles %}
+    <div class="article-card">
+      <h3>{{ article.title }}</h3>
+      <p>{{ article.summary|truncatewords:25 }}</p>
+      <a href="{% url 'article_detail' article.pk %}" class="btn btn-secondary">Read more</a>
+    </div>
+  {% empty %}
+    <p class="no-articles">No articles found.</p>
+  {% endfor %}
+</div>
+{% endblock %}
